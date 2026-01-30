@@ -1,7 +1,9 @@
 import clsx from "clsx";
 import useMacBookContext from "../../context/index";
 import { Canvas } from "@react-three/fiber";
-import { Box, OrbitControls } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
+import MacbookModel14 from "../models/Macbook-14.jsx";
+import StudioLights from "../models/StudioLights.jsx";
 
 const Product = () => {
   const { color, scale, setColor, setScale } = useMacBookContext();
@@ -63,13 +65,10 @@ const Product = () => {
         id="canvas"
         camera={{ position: [0, 2, 5], fov: 50, near: 0.1, far: 1000 }}
       >
-        <Box
-          position={[0, 0, 0]}
-          scale={10 * scale}
-          material-color={color}
-        ></Box>
+        <StudioLights/>
+        <MacbookModel14 scale={0.06} position={[0, 0, 0]} />
 
-        <OrbitControls enableZoom={false}/>
+        <OrbitControls enableZoom={false} />
       </Canvas>
     </section>
   );
