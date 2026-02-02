@@ -7,10 +7,14 @@ import useHandleSwitch from "./useHandleSwitch";
 const ModelSwitcher = (props) => {
   const { scale, isMobile } = props;
 
+  const SCALE_LARGE_DESKTOP = 0.08;
+  const SCALE_LARGE_MOBILE = 0.05;
+
   const smallMacbookRef = useRef();
   const largeMacbookRef = useRef();
 
-  const showLargeMacbook = scale === 0.08 || scale === 0.05;
+  const showLargeMacbook =
+    scale === SCALE_LARGE_DESKTOP || scale === SCALE_LARGE_MOBILE;
 
   const orbitControls = {
     snap: true,
@@ -21,12 +25,7 @@ const ModelSwitcher = (props) => {
     config: { mass: 1, tension: 0, friction: 26 },
   };
 
-  const { fadeMeshes, moveGroup } = useHandleSwitch(
-    showLargeMacbook,
-    smallMacbookRef,
-    largeMacbookRef,
-    scale,
-  );
+  useHandleSwitch(showLargeMacbook, smallMacbookRef, largeMacbookRef, scale);
 
   return (
     <>
@@ -38,7 +37,7 @@ const ModelSwitcher = (props) => {
 
       <PresentationControls {...orbitControls}>
         <group ref={smallMacbookRef}>
-          <MacbookModel14 scale={isMobile ? 0.03 : 0.06} />
+          <MacbookModel14 scale={isMobile ? 0.04 : 0.06} />
         </group>
       </PresentationControls>
     </>

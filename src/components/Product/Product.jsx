@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import useMacBookContext from "../../context/index";
 import { Canvas } from "@react-three/fiber";
-import MacbookModel14 from "../models/Macbook-14.jsx";
 import StudioLights from "../three/StudioLights.jsx";
 import ModelSwitcher from "../three/ModelSwitcher.jsx";
 import { useMediaQuery } from "react-responsive";
@@ -9,7 +8,7 @@ import { useMediaQuery } from "react-responsive";
 const Product = () => {
   const { color, scale, setColor, setScale } = useMacBookContext();
 
-  const isMobile = useMediaQuery({ query: "max-width: 1024px" });
+  const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
 
   return (
     <section id="product-viewer">
@@ -26,9 +25,9 @@ const Product = () => {
             <div
               className={clsx(
                 "bg-neutral-300",
-                color === "#adb5db" && "active",
+                color === "#adb5bd" && "active",
               )}
-              onClick={() => setColor("#adb5db")}
+              onClick={() => setColor("#adb5bd")}
             />
             <div
               className={clsx(
@@ -69,7 +68,10 @@ const Product = () => {
         camera={{ position: [0, 2, 5], fov: 50, near: 0.1, far: 1000 }}
       >
         <StudioLights />
-        <ModelSwitcher scale={isMobile ? scale - 0.02 : scale} isMobile={isMobile} />
+        <ModelSwitcher
+          scale={isMobile ? scale - 0.03 : scale}
+          isMobile={isMobile}
+        />
       </Canvas>
     </section>
   );

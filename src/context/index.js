@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-const useMacBookContext = create((set, get) => ({
+const useMacBookContext = create((set) => ({
   color: "#2e2c2e",
   setColor: (color) => set({ color }),
   scale: 0.08,
