@@ -22,7 +22,6 @@ const App = () => {
       <Performance />
       <Features />
       <Highlights />
-      <Features />
       <Footer />
     </main>
   );
