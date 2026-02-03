@@ -1,4 +1,4 @@
-import animateShowcase from "../Product/animateShowcase";
+import animateShowcase from "./animateShowcase";
 
 const Showcase = () => {
   animateShowcase();
